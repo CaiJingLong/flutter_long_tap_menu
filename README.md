@@ -1,16 +1,28 @@
-# input_overlay
+# menu
 
-A new Flutter project.
+menu with flutter
 
-## Getting Started
+wrap your widget ,and long tap to show menu
 
-This project is a starting point for a Flutter application.
+like this:
 
-A few resources to get you started if this is your first Flutter project:
+![img](https://raw.githubusercontent.com/CaiJingLong/asset_for_picgo/master/20190301214752.png)
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+## Usage
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+```dart
+import 'package:menu/menu.dart';
+
+Menu(
+  child: Container(
+    width: 200,
+    color: Colors.yellow,
+    height: 100,
+    child: Text("长按弹出"),
+  ),
+  items: [
+    MenuItem("copy", () {}),
+    MenuItem("add", _incrementCounter),
+  ],
+);
+```
