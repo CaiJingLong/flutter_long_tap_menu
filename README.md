@@ -18,7 +18,7 @@ Menu(
     width: 200,
     color: Colors.yellow,
     height: 100,
-    child: Text("长按弹出"),
+    child: Text("long press show menu"),
   ),
   items: [
     MenuItem("copy", () {}),

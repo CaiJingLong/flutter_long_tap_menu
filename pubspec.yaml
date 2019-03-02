@@ -1,7 +1,7 @@
 name: menu
 description: menu with flutter,
   wrap your widget ,and long tap to show menu
-version: 0.1.0
+version: 0.1.1
 
 author: Caijinglong<cjl_spy@163.com>
 homepage: https://github.com/CaiJingLong/flutter_long_tap_menu

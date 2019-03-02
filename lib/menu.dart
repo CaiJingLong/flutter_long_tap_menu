@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 typedef Widget ItemBuilder(
   MenuItem item,
   MenuDecoration menuDecoration,
-  VoidCallback dismiss,
-);
+  VoidCallback dismiss, {
+  bool isFirst,
+  bool isLast,
+});
 
 class Menu extends StatefulWidget {
   final Widget child;
@@ -47,29 +49,33 @@ class _MenuState extends State<Menu> {
   void showItem(Rect rect) {
     var items = widget.items;
     Widget w;
-    w = Wrap(
-      // gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-      //   maxCrossAxisExtent: 100.0,
-      // ),
-      children: items
-          .map((item) => widget.itemBuilder(
-                item,
-                menuDecoration,
-                dismissBackground,
-              ))
-          .toList(),
+    w = ListView(
+      scrollDirection: Axis.horizontal,
+      children: items.map((item) {
+        var index = widget.items.indexOf(item);
+        return widget.itemBuilder(
+          item,
+          menuDecoration,
+          dismissBackground,
+          isFirst: index == 0,
+          isLast: index == widget.items.length - 1,
+        );
+      }).toList(),
       // shrinkWrap: true,
+      physics: const ClampingScrollPhysics(),
     );
 
     w = FittedBox(
-      fit: BoxFit.scaleDown,
+      fit: BoxFit.none,
       alignment: Alignment.topLeft,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(menuDecoration.radius),
         child: Container(
           alignment: Alignment.topLeft,
-          color: Colors.green,
+          // color: Colors.green,
+          width: MediaQuery.of(context).size.width,
           child: w,
+          height: 33,
         ),
       ),
     );
@@ -176,7 +182,12 @@ class MenuDecoration {
 }
 
 Widget _itemBuilder(
-    MenuItem item, MenuDecoration menuDecoration, VoidCallback dismiss) {
+  MenuItem item,
+  MenuDecoration menuDecoration,
+  VoidCallback dismiss, {
+  bool isFirst,
+  bool isLast,
+}) {
   var inkWell = InkWell(
     splashColor: menuDecoration.splashColor,
     // color: menuDecoration.color,
