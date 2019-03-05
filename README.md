@@ -58,6 +58,6 @@ Menu(
 | textStyle   | TextStyle      | false    | style of menu item                            |
 | color       | Color          | false    | color of menu item                            |
 | splashColor | Color          | false    | splashColor of menu item                      |
-| radius      | doule          | false    | radius of menu item ,only first and last item |
+| radius      | doule          | false    | radius of menu item, only first and last item |
 | constraints | BoxConstraints | false    | constraints of menu item                      |
 | padding     | TextStyle      | false    | padding of menu item'text                     |
