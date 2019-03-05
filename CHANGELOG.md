@@ -1,3 +1,7 @@
+## 0.1.3
+
+add click type params
+
 ## 0.1.2
 
 update readme

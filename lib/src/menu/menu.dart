@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:menu/src/helper/ui_helper.dart';
+import 'package:menu/src/menu/tap_type.dart';
+
 part './decoration.dart';
 
 typedef Widget ItemBuilder(
@@ -15,6 +17,7 @@ class Menu extends StatefulWidget {
   final List<MenuItem> items;
   final MenuDecoration decoration;
   final ItemBuilder itemBuilder;
+  final ClickType clickType;
 
   const Menu({
     Key key,
@@ -22,28 +25,49 @@ class Menu extends StatefulWidget {
     this.child,
     this.decoration = const MenuDecoration(),
     this.itemBuilder = defaultItemBuilder,
+    this.clickType = ClickType.longPress,
   }) : super(key: key);
 
   @override
-  _MenuState createState() => _MenuState();
+  MenuState createState() => MenuState();
 }
 
-class _MenuState extends State<Menu> {
+class MenuState extends State<Menu> {
   GlobalKey key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      key: key,
-      onLongPress: () {
-        var rect = UIHelper.findGlobalRect(key);
-        showItem(rect);
-      },
-      behavior: HitTestBehavior.opaque,
-      child: Container(
-        child: widget.child,
-      ),
-    );
+    switch (widget.clickType) {
+      case ClickType.longPress:
+        return GestureDetector(
+          key: key,
+          onLongPress: defaultShowItem,
+          behavior: HitTestBehavior.opaque,
+          child: widget.child,
+        );
+        break;
+      case ClickType.click:
+        return GestureDetector(
+          key: key,
+          onTap: defaultShowItem,
+          behavior: HitTestBehavior.opaque,
+          child: widget.child,
+        );
+      case ClickType.doubleClick:
+        return GestureDetector(
+          key: key,
+          onDoubleTap: defaultShowItem,
+          behavior: HitTestBehavior.opaque,
+          child: widget.child,
+        );
+      default:
+        return widget.child;
+    }
+  }
+
+  void defaultShowItem() {
+    var rect = UIHelper.findGlobalRect(key);
+    showItem(rect);
   }
 
   OverlayEntry itemEntry;
