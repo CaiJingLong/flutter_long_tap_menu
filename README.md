@@ -1,8 +1,11 @@
 # menu
 
+[![pub package](https://img.shields.io/pub/v/menu.svg)](https://pub.dartlang.org/packages/menu)
+![GitHub](https://img.shields.io/github/license/caijinglong/flutter_long_tap_menu.svg)
+
 menu with flutter
 
-wrap your widget ,and long tap to show menu
+just wrap your widget ,and long tap to show menu
 
 like this:
 
@@ -50,11 +53,11 @@ Menu(
 
 ### MenuDecoration
 
-| Params      | Type           | Required | Describe                                       |
-| ----------- | -------------- | -------- | ---------------------------------------------- |
-| textStyle   | TextStyle      | false    | style of menu item                             |
-| color       | Color          | false    | color of menu item                             |
-| splashColor | Color          | false    | splashColor of menu item                       |
-| radius      | doule          | false    | radius of menu item , only first and last item |
-| constraints | BoxConstraints | false    | constraints of menu item                       |
-| padding     | TextStyle      | false    | padding of menu item'text                      |
+| Params      | Type           | Required | Describe                                      |
+| ----------- | -------------- | -------- | --------------------------------------------- |
+| textStyle   | TextStyle      | false    | style of menu item                            |
+| color       | Color          | false    | color of menu item                            |
+| splashColor | Color          | false    | splashColor of menu item                      |
+| radius      | doule          | false    | radius of menu item ,only first and last item |
+| constraints | BoxConstraints | false    | constraints of menu item                      |
+| padding     | TextStyle      | false    | padding of menu item'text                     |
