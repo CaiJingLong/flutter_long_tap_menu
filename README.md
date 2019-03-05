@@ -56,7 +56,7 @@ Menu(
 
 | Name        | Type           | Required | Describe                                      | Default                                                  |
 | ----------- | -------------- | -------- | --------------------------------------------- | -------------------------------------------------------- |
-| textStyle   | TextStyle      | false    | style of menu item                            | white 14                                                 |
+| textStyle   | TextStyle      | false    | style of menu item                            | `TextStyle(fontSize: 14.0,color: Colors.white)`          |
 | color       | Color          | false    | color of menu item                            | `Color(0xFF111111)`                                      |
 | splashColor | Color          | false    | splashColor of menu item                      | `Color(0xFF888888)`                                      |
 | radius      | doule          | false    | radius of menu item, only first and last item | `5.0`                                                    |
