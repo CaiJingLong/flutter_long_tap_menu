@@ -54,14 +54,14 @@ Menu(
 
 ### MenuDecoration
 
-| Name        | Type           | Required | Describe                                      |
-| ----------- | -------------- | -------- | --------------------------------------------- |
-| textStyle   | TextStyle      | false    | style of menu item                            |
-| color       | Color          | false    | color of menu item                            |
-| splashColor | Color          | false    | splashColor of menu item                      |
-| radius      | doule          | false    | radius of menu item, only first and last item |
-| constraints | BoxConstraints | false    | constraints of menu item                      |
-| padding     | TextStyle      | false    | padding of menu item'text                     |
+| Name        | Type           | Required | Describe                                      | Default                                                  |
+| ----------- | -------------- | -------- | --------------------------------------------- | -------------------------------------------------------- |
+| textStyle   | TextStyle      | false    | style of menu item                            | white 14                                                 |
+| color       | Color          | false    | color of menu item                            | `Color(0xFF111111)`                                      |
+| splashColor | Color          | false    | splashColor of menu item                      | `Color(0xFF888888)`                                      |
+| radius      | doule          | false    | radius of menu item, only first and last item | `5.0`                                                    |
+| constraints | BoxConstraints | false    | constraints of menu item                      | `BoxConstraints()`                                       |
+| padding     | TextStyle      | false    | padding of menu item'text                     | `EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0)` |
 
 ### ClickType
 
