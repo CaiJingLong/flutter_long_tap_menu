@@ -19,7 +19,7 @@ class Menu extends StatefulWidget {
     this.items,
     this.child,
     this.decoration = const MenuDecoration(),
-    this.itemBuilder = _itemBuilder,
+    this.itemBuilder = defaultItemBuilder,
   }) : super(key: key);
 
   @override
@@ -68,16 +68,20 @@ class _MenuState extends State<Menu> {
     w = FittedBox(
       fit: BoxFit.none,
       alignment: Alignment.topLeft,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(menuDecoration.radius),
-        child: Container(
-          alignment: Alignment.topLeft,
-          // color: Colors.green,
-          width: MediaQuery.of(context).size.width,
-          child: w,
-          height: 33,
-        ),
+      child: Container(
+        alignment: Alignment.topLeft,
+        // color: Colors.green,
+        width: MediaQuery.of(context).size.width,
+        child: w,
+        height: 33,
       ),
+    );
+
+    w = ClipRRect(
+      borderRadius: BorderRadius.circular(
+        menuDecoration.radius,
+      ),
+      child: w,
     );
 
     w = Padding(
@@ -107,32 +111,6 @@ class _MenuState extends State<Menu> {
   }
 
   MenuDecoration get menuDecoration => widget.decoration;
-
-  Widget _buildItem(MenuItem item) {
-    // var index = widget.items.indexOf(item);
-    // var isFirst = index == 0;
-    // var isLast = index == widget.items.length - 1;
-    return Material(
-      child: InkWell(
-        splashColor: menuDecoration.splashColor,
-        // color: menuDecoration.color,
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10.0,
-            vertical: 10.0,
-          ),
-          child: Text(
-            item.text,
-            style: menuDecoration.textStyle,
-          ),
-        ),
-        onTap: () {
-          item.onTap();
-          dismissBackground();
-        },
-      ),
-    );
-  }
 
   void dismissBackground() {
     itemEntry.remove();
@@ -170,6 +148,9 @@ class MenuDecoration {
   final Color splashColor;
   final double radius;
 
+  final BoxConstraints itemConstraints;
+  final EdgeInsetsGeometry itemPadding;
+
   const MenuDecoration({
     this.textStyle = const TextStyle(
       fontSize: 14.0,
@@ -178,28 +159,36 @@ class MenuDecoration {
     this.color = const Color(0xFF111111),
     this.splashColor = const Color(0xFF888888),
     this.radius = 5.0,
+    this.itemConstraints,
+    this.itemPadding,
   });
 }
 
-Widget _itemBuilder(
+Widget defaultItemBuilder(
   MenuItem item,
   MenuDecoration menuDecoration,
   VoidCallback dismiss, {
   bool isFirst,
   bool isLast,
 }) {
-  var inkWell = InkWell(
+  final BoxConstraints constraints = menuDecoration.itemConstraints ??
+      const BoxConstraints(
+        minWidth: 77.0,
+        minHeight: 33.0,
+      );
+
+  final EdgeInsetsGeometry itemPadding = menuDecoration.itemPadding ??
+      const EdgeInsets.symmetric(
+        horizontal: 10.0,
+        vertical: 10.0,
+      );
+
+  Widget w = InkWell(
     splashColor: menuDecoration.splashColor,
     // color: menuDecoration.color,
     child: Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10.0,
-        vertical: 10.0,
-      ),
-      constraints: const BoxConstraints(
-        minWidth: 77.0,
-        minHeight: 33.0,
-      ),
+      padding: itemPadding,
+      constraints: constraints,
       alignment: Alignment.center,
       child: Text(
         item.text,
@@ -211,8 +200,20 @@ Widget _itemBuilder(
       dismiss();
     },
   );
-  return Material(
+
+  var r = menuDecoration.radius;
+  var radius = BorderRadius.horizontal(
+    left: isFirst ? Radius.circular(r) : Radius.zero,
+    right: isLast ? Radius.circular(r) : Radius.zero,
+  );
+
+  w = Material(
     color: menuDecoration.color,
-    child: inkWell,
+    child: w,
+  );
+
+  return ClipRRect(
+    child: w,
+    borderRadius: radius,
   );
 }
