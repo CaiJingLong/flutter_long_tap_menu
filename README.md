@@ -24,5 +24,8 @@ Menu(
     MenuItem("copy", () {}),
     MenuItem("add", _incrementCounter),
   ],
+  decoration: MenuDecoration(
+    itemConstraints: BoxConstraints(),
+  ),
 );
 ```

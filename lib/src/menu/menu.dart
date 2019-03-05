@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:menu/src/helper/ui_helper.dart';
+part './decoration.dart';
 
 typedef Widget ItemBuilder(
   MenuItem item,
@@ -34,7 +36,7 @@ class _MenuState extends State<Menu> {
     return GestureDetector(
       key: key,
       onLongPress: () {
-        var rect = findGlobalRect(key);
+        var rect = UIHelper.findGlobalRect(key);
         showItem(rect);
       },
       behavior: HitTestBehavior.opaque,
@@ -77,13 +79,6 @@ class _MenuState extends State<Menu> {
       ),
     );
 
-    w = ClipRRect(
-      borderRadius: BorderRadius.circular(
-        menuDecoration.radius,
-      ),
-      child: w,
-    );
-
     w = Padding(
       padding: EdgeInsets.only(left: rect.left, top: rect.top),
       child: w,
@@ -123,45 +118,6 @@ class MenuItem {
   final Function onTap;
 
   const MenuItem(this.text, this.onTap);
-}
-
-Rect findGlobalRect(GlobalKey key) {
-  RenderBox renderObject = key.currentContext?.findRenderObject();
-  if (renderObject == null) {
-    return null;
-  }
-
-  var globalOffset = renderObject?.localToGlobal(Offset.zero);
-
-  if (globalOffset == null) {
-    return null;
-  }
-
-  var bounds = renderObject.paintBounds;
-  bounds = bounds.translate(globalOffset.dx, globalOffset.dy);
-  return bounds;
-}
-
-class MenuDecoration {
-  final TextStyle textStyle;
-  final Color color;
-  final Color splashColor;
-  final double radius;
-
-  final BoxConstraints itemConstraints;
-  final EdgeInsetsGeometry itemPadding;
-
-  const MenuDecoration({
-    this.textStyle = const TextStyle(
-      fontSize: 14.0,
-      color: Colors.white,
-    ),
-    this.color = const Color(0xFF111111),
-    this.splashColor = const Color(0xFF888888),
-    this.radius = 5.0,
-    this.itemConstraints,
-    this.itemPadding,
-  });
 }
 
 Widget defaultItemBuilder(

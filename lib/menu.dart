@@ -1,1 +1,1 @@
-export 'src/menu.dart';
+export 'src/menu/menu.dart';
