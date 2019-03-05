@@ -6,8 +6,8 @@ class MenuDecoration {
   final Color splashColor;
   final double radius;
 
-  final BoxConstraints itemConstraints;
-  final EdgeInsetsGeometry itemPadding;
+  final BoxConstraints constraints;
+  final EdgeInsetsGeometry padding;
 
   const MenuDecoration({
     this.textStyle = const TextStyle(
@@ -17,7 +17,7 @@ class MenuDecoration {
     this.color = const Color(0xFF111111),
     this.splashColor = const Color(0xFF888888),
     this.radius = 5.0,
-    this.itemConstraints,
-    this.itemPadding,
+    this.constraints,
+    this.padding,
   });
 }

@@ -127,13 +127,10 @@ Widget defaultItemBuilder(
   bool isFirst,
   bool isLast,
 }) {
-  final BoxConstraints constraints = menuDecoration.itemConstraints ??
-      const BoxConstraints(
-        minWidth: 77.0,
-        minHeight: 33.0,
-      );
+  final BoxConstraints constraints =
+      menuDecoration.constraints ?? const BoxConstraints();
 
-  final EdgeInsetsGeometry itemPadding = menuDecoration.itemPadding ??
+  final EdgeInsetsGeometry itemPadding = menuDecoration.padding ??
       const EdgeInsets.symmetric(
         horizontal: 10.0,
         vertical: 10.0,

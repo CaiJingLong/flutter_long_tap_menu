@@ -1,3 +1,9 @@
+## 0.1.2
+
+update readme
+
+add two decoration params
+
 ## 0.1.1
 
 If it goes beyond the screen, you can scroll.

@@ -29,3 +29,32 @@ Menu(
   ),
 );
 ```
+
+## params
+
+### Menu
+
+| Params      | Type           | Required | Describe                     |
+| ----------- | -------------- | -------- | ---------------------------- |
+| child       | Widget         | true     | widget                       |
+| items       | List<MenuItem> | true     | options                      |
+| decoration  | MenuDecoration | false    | decoration for menu and item |
+| itemBuilder | ItemBuilder    | false    | customItem                   |
+
+### MenuItem
+
+| Params | Type     | Required | Describe |
+| ------ | -------- | -------- | -------- |
+| text   | string   | true     |          |
+| onTap  | Function | true     | onTap    |
+
+### MenuDecoration
+
+| Params      | Type           | Required | Describe                                       |
+| ----------- | -------------- | -------- | ---------------------------------------------- |
+| textStyle   | TextStyle      | false    | style of menu item                             |
+| color       | Color          | false    | color of menu item                             |
+| splashColor | Color          | false    | splashColor of menu item                       |
+| radius      | doule          | false    | radius of menu item , only first and last item |
+| constraints | BoxConstraints | false    | constraints of menu item                       |
+| padding     | TextStyle      | false    | padding of menu item'text                      |
