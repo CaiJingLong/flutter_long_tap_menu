@@ -9,7 +9,7 @@ just wrap your widget ,and long tap to show menu
 
 like this:
 
-![img](https://raw.githubusercontent.com/CaiJingLong/asset_for_picgo/master/20190301214752.png)
+![Screenshot_2019-05-23-10-58-43-361_com.example.ex.png](https://raw.githubusercontent.com/kikt-blog/image/master/img/Screenshot_2019-05-23-10-58-43-361_com.example.ex.png)
 
 ## Usage
 
@@ -37,13 +37,14 @@ Menu(
 
 ### Menu
 
-| Name        | Type           | Required | Describe                     |
-| ----------- | -------------- | -------- | ---------------------------- |
-| child       | Widget         | true     | widget                       |
-| items       | List<MenuItem> | true     | options                      |
-| decoration  | MenuDecoration | false    | decoration for menu and item |
-| itemBuilder | ItemBuilder    | false    | customItem                   |
-| clickType   | ClickType      | false    |                              |
+| Name           | Type                                                                | Required | Describe                     |
+| -------------- | ------------------------------------------------------------------- | -------- | ---------------------------- |
+| child          | Widget                                                              | true     | widget                       |
+| items          | List<MenuItem>                                                      | true     | options                      |
+| decoration     | MenuDecoration                                                      | false    | decoration for menu and item |
+| itemBuilder    | ItemBuilder                                                         | false    | customItem                   |
+| clickType      | ClickType                                                           | false    |                              |
+| dividerBuilder | typedef Widget DividerBuilder(BuildContext context, int lastIndex); | false    | build divider builder        |
 
 ### MenuItem
 

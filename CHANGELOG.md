@@ -1,3 +1,7 @@
+## 0.1.4
+
+add divider builder
+
 ## 0.1.3
 
 add click type params
