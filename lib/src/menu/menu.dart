@@ -12,12 +12,15 @@ typedef Widget ItemBuilder(
   bool isLast,
 });
 
+typedef Widget DividerBuilder(BuildContext context, int lastIndex);
+
 class Menu extends StatefulWidget {
   final Widget child;
   final List<MenuItem> items;
   final MenuDecoration decoration;
   final ItemBuilder itemBuilder;
   final ClickType clickType;
+  final DividerBuilder dividerBuilder;
 
   const Menu({
     Key key,
@@ -26,10 +29,18 @@ class Menu extends StatefulWidget {
     this.decoration = const MenuDecoration(),
     this.itemBuilder = defaultItemBuilder,
     this.clickType = ClickType.longPress,
+    this.dividerBuilder = buildDivider,
   }) : super(key: key);
 
   @override
   MenuState createState() => MenuState();
+
+  static Widget buildDivider(BuildContext context, int lastIndex) {
+    return Container(
+      width: 0.5,
+      color: Colors.white,
+    );
+  }
 }
 
 class MenuState extends State<Menu> {
@@ -79,12 +90,20 @@ class MenuState extends State<Menu> {
       scrollDirection: Axis.horizontal,
       children: items.map((item) {
         var index = widget.items.indexOf(item);
-        return widget.itemBuilder(
+        var itemWidget = widget.itemBuilder(
           item,
           menuDecoration,
           dismissBackground,
           isFirst: index == 0,
           isLast: index == widget.items.length - 1,
+        );
+
+        return Row(
+          children: <Widget>[
+            itemWidget,
+            if (index != widget.items.length - 1)
+              widget.dividerBuilder(context, index),
+          ],
         );
       }).toList(),
       // shrinkWrap: true,
@@ -99,7 +118,7 @@ class MenuState extends State<Menu> {
         // color: Colors.green,
         width: MediaQuery.of(context).size.width,
         child: w,
-        height: 33,
+        height: 36,
       ),
     );
 
