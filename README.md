@@ -37,14 +37,16 @@ Menu(
 
 ### Menu
 
-| Name           | Type                                                                | Required | Describe                     |
-| -------------- | ------------------------------------------------------------------- | -------- | ---------------------------- |
-| child          | Widget                                                              | true     | widget                       |
-| items          | List<MenuItem>                                                      | true     | options                      |
-| decoration     | MenuDecoration                                                      | false    | decoration for menu and item |
-| itemBuilder    | ItemBuilder                                                         | false    | customItem                   |
-| clickType      | ClickType                                                           | false    |                              |
-| dividerBuilder | typedef Widget DividerBuilder(BuildContext context, int lastIndex); | false    | build divider builder        |
+| Name           | Type           | Required | Describe                     |
+| -------------- | -------------- | -------- | ---------------------------- |
+| child          | Widget         | true     | widget                       |
+| items          | List<MenuItem> | true     | options                      |
+| decoration     | MenuDecoration | false    | decoration for menu and item |
+| itemBuilder    | ItemBuilder    | false    | customItem                   |
+| clickType      | ClickType      | false    |                              |
+| dividerBuilder | DivderBuilder  | false    | build divider builder        |
+
+`typedef Widget DividerBuilder(BuildContext context, int lastIndex);`
 
 ### MenuItem
 
